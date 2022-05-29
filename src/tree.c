@@ -47,3 +47,23 @@ void decode(FILE *ptr, struct node *root, struct node *node, char *bits, int len
         }
     }
 }
+
+int getCodes(struct node *root, int arr[], int index, int count) {
+  if(root->left_child){
+    arr[index] = 0;
+    count = getCodes(root->left_child, arr, index + 1, count);
+  }
+  if(root->right_child){
+    arr[index] = 1;
+    count = getCodes(root->right_child, arr, index + 1, count);
+  }
+  if(isLeaf(root)){
+    count = count + index;
+    printf(" %c  | ", root->label);
+      for (int i = 0; i < index; ++i){
+        printf("%d", arr[i]);
+      }
+    printf("\n");
+  }
+  return count;
+}
