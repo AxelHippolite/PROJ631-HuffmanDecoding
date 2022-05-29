@@ -39,5 +39,10 @@ int main(int argc, char *argv[]){
     printf("--> Result : ");
     decode(res, root, root, bits, len_text, 0);
 
+    printf("\n\n--> Codes (no use) :\n");
+    int code[50], index = 0; 
+    int total_len = getCodes(root, code, index, 0);
+    printf("ALL LEN : %d BITS.\n", total_len);
+
     return 0;
 }
