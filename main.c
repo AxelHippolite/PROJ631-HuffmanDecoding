@@ -44,5 +44,13 @@ int main(int argc, char *argv[]){
     int total_len = getCodes(root, code, index, 0);
     printf("ALL LEN : %d BITS.\n", total_len);
 
+    int len_res = getSize(res);
+    float comp_rate = getCompRate(len_bin, len_res);
+    float avg_bits = (float)(total_len) / (float)nb_letters;
+
+    fclose(res);
+
+    displayFooter(comp_rate, avg_bits);
+
     return 0;
 }

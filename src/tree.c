@@ -67,3 +67,7 @@ int getCodes(struct node *root, int arr[], int index, int count) {
   }
   return count;
 }
+
+float getCompRate(int len_bin, int len_res){
+    return 1 - ((float)len_bin / (float)len_res);
+}
