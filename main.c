@@ -1,4 +1,7 @@
 #include "file_reader.h"
+#include "node.h"
+#include "tree.h"
+#include "displayer.h"
 
 int main(int argc, char *argv[]){
     printf("##### Huffman Decompression #####\n");
@@ -19,6 +22,12 @@ int main(int argc, char *argv[]){
     int len_text = occCalculator(ptr, nb_letters, occ, freq);
 
     fclose(ptr);
+
+    struct node **nodes = createLeavesNodes(nb_letters, freq, occ);
+
+    displayAlphabet(nb_letters, nodes);
+
+    struct node *root = createTree(nb_letters, nodes);
 
     return 0;
 }
