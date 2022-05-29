@@ -26,3 +26,24 @@ struct node *createTree(int nb_letters, struct node **nodes){
     }
     return nodes[0];
 }
+
+void decode(FILE *ptr, struct node *root, struct node *node, char *bits, int len_word, int pos){
+    if(len_word != 0){
+        if(isLeaf(node)){
+            len_word--;
+            printf("%c", node->label);
+            fprintf(ptr, "%c", node->label);
+            decode(ptr, root, root, bits, len_word, pos);
+        }
+        else{
+            if(bits[pos] == '0'){
+                pos++;
+                decode(ptr, root, node->left_child, bits, len_word, pos);
+            }
+            else{
+                pos++;
+                decode(ptr, root, node->right_child, bits, len_word, pos);
+            }
+        }
+    }
+}

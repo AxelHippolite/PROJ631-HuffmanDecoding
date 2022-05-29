@@ -1,6 +1,7 @@
 #include "file_reader.h"
 #include "node.h"
 #include "tree.h"
+#include "displayer.h"
 
 int main(int argc, char *argv[]){
     printf("##### Huffman Decompression #####\n");
@@ -34,6 +35,9 @@ int main(int argc, char *argv[]){
     displayBits(bits);
 
     fclose(bin);
+
+    printf("--> Result : ");
+    decode(res, root, root, bits, len_text, 0);
 
     return 0;
 }
