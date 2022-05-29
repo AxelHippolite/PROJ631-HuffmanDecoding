@@ -4,6 +4,13 @@ int getLen(FILE *ptr){
     return fgetc(ptr) - '0';
 }
 
+int getSize(FILE *ptr){
+    fseek(ptr, 0, SEEK_END);
+    int len = ftell(ptr);
+    fseek(ptr, 0, SEEK_SET);
+    return len;
+}
+
 int occCalculator(FILE *ptr, int nb_letters, char *occ, int *freq){
     char line[4];
     int len_text = 0;
@@ -18,4 +25,18 @@ int occCalculator(FILE *ptr, int nb_letters, char *occ, int *freq){
         }
     }
     return len_text;
+}
+
+char *getBits(FILE *bin, int len){
+    char *buffer = malloc(len);
+    char *bits = malloc(len * 8 * sizeof(char));
+    fread(buffer, len, 1, bin);
+    for(int j = 0; j < len; j++){
+        int i = CHAR_BIT;
+        while(i--) {
+            bits[j * CHAR_BIT + CHAR_BIT - i - 1] = '0' + ((buffer[j] >> i) & 1);
+        }
+    }
+    free(buffer);
+    return bits;
 }

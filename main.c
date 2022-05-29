@@ -1,7 +1,6 @@
 #include "file_reader.h"
 #include "node.h"
 #include "tree.h"
-#include "displayer.h"
 
 int main(int argc, char *argv[]){
     printf("##### Huffman Decompression #####\n");
@@ -28,6 +27,13 @@ int main(int argc, char *argv[]){
     displayAlphabet(nb_letters, nodes);
 
     struct node *root = createTree(nb_letters, nodes);
+
+    int len_bin = getSize(bin);
+    char *bits = getBits(bin, len_bin);
+
+    displayBits(bits);
+
+    fclose(bin);
 
     return 0;
 }
