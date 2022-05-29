@@ -8,6 +8,12 @@ struct node **createLeavesNodes(int nb_letters, int *freq, char *occ){
     return nodes;
 }
 
+void remove_elt(struct node **array, int index, int array_length){
+   for(int i = index; i < array_length - 1; i++){
+       array[i] = array[i + 1];
+   }
+}
+
 struct node *createTree(int nb_letters, struct node **nodes){
     while(nb_letters != 1){
         struct node *l_node = nodes[0];
