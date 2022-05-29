@@ -1,5 +1,4 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include "file_reader.h"
 
 int main(int argc, char *argv[]){
     printf("##### Huffman Decompression #####\n");
@@ -13,6 +12,13 @@ int main(int argc, char *argv[]){
     FILE *ptr = fopen(ptr_path, "r");
     FILE *bin = fopen(bin_path, "rb");
     FILE *res = fopen(res_path, "w");
+
+    int nb_letters = getLen(ptr);
+    char *occ = malloc(nb_letters * sizeof(char));
+    int *freq = malloc(nb_letters * sizeof(int));
+    int len_text = occCalculator(ptr, nb_letters, occ, freq);
+
+    fclose(ptr);
 
     return 0;
 }
