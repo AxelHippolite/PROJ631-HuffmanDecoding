@@ -8,7 +8,11 @@ In order to use the code correctly, we invite you to follow the few steps below 
 3. Write the path of the files in the terminal (with the extension).
 4. Write the path of the "result" file in the terminal.
 5. After pressing *enter* several things appear.
-6. The program will end automatically.
+    - A TEXT file named *nameOfFile.txt* containing the original text is generated in the *results* folder.
+    - The Alphabet and the BITS String are displayed.
+    - The Results of the Decompression is displayed.
+    - The compression ratio and the average number of encoding bits are displayed.
+7. The program will end automatically.
 
 The GIF below illustrates the different steps detailed above : 
 
